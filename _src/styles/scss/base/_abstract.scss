@@ -1,0 +1,11 @@
+
+%ul-reset {
+  margin: 0; padding: 0;
+  list-style: none;
+}
+
+%main-grid {
+  padding: 0 $global-gutters/2;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}

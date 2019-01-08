@@ -1,10 +1,8 @@
 ---
 layout: index
-title: Accueil
+title: Blog
 permalink: /
 description: "Mes opinions sur le Web mais aussi sur ma vie de parent et de citoyen."
-displayCustomHead: true
-displayCustomTitle: false
 i18n-key: home
 pagination: 
   enabled: true
