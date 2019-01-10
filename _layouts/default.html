@@ -29,11 +29,11 @@ layout: microtypo
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/pt-sans-bold.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/pt-serif-italic.woff2" crossorigin>
     <link rel="preload" as="image" href="/assets/images/symbols.svg">
-    <link rel="preload" as="style" href="/assets/styles/critical.css">
-    <link rel="preload" as="style" href="/assets/styles/main.css">
+    <link rel="preload" as="style" href="/assets/styles/critical_{{ site.time | date: "%s" }}.css">
+    <link rel="preload" as="style" href="/assets/styles/main_{{ site.time | date: "%s" }}.css">
     {% if page.i18n-key == "search" %}
-    <link rel="preload" as="style" href="/assets/styles/vendors/instantsearch.min.css">
-    <link rel="preload" as="style" href="/assets/styles/vendors/instantsearch.min.css">
+    <link rel="preload" as="style" href="/assets/styles/vendors/instantsearch_{{ site.time | date: "%s" }}.min.css">
+    <link rel="preload" as="style" href="/assets/styles/vendors/instantsearch_{{ site.time | date: "%s" }}.min.css">
     {% endif %}
     {% comment %} / Preloading the fonts and styles for later use {% endcomment %}
 
@@ -41,12 +41,12 @@ layout: microtypo
     <script>performance.mark('mark_declare_css_start');</script>
     <link href="/assets/styles/critical.css" rel="stylesheet">
     {% capture themeColor %}{{ site.data.styles.main.color }}{% endcapture %}
-    <link href="/assets/styles/main.css" rel="stylesheet">
+    <link href="/assets/styles/main_{{ site.time | date: "%s" }}.css" rel="stylesheet">
     {% if page.i18n-key == "search" %}
-    <link href="/assets/styles/vendors/instantsearch.min.css" rel="stylesheet">
-    <link href="/assets/styles/vendors/instantsearch-theme-algolia.min.css" rel="stylesheet">
+    <link href="/assets/styles/vendors/instantsearch_{{ site.time | date: "%s" }}.min.css" rel="stylesheet">
+    <link href="/assets/styles/vendors/instantsearch-theme-algolia_{{ site.time | date: "%s" }}.min.css" rel="stylesheet">
     {% endif %}
-    <link href="/assets/styles/vendors/highlightjs.css" rel="stylesheet">
+    <link href="/assets/styles/vendors/highlightjs_{{ site.time | date: "%s" }}.css" rel="stylesheet">
     <script>performance.mark('mark_declare_css_end');performance.measure('mark_declare_css', 'mark_declare_css_start', 'mark_declare_css_end');</script>
     {% comment %} / Styles {% endcomment %}
 
