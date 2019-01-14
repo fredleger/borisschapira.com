@@ -2,15 +2,20 @@
 /* ==========================================================================
    CONFIG
    ========================================================================== */
-.categories ul, .main-header ul {
+.categories ul, .nav-header ul {
   margin: 0;
   padding: 0;
   list-style: none; }
 
-.container, .main-header {
-  padding: 0 1rem;
+.container, .nav-header {
   display: grid;
   grid-template-columns: repeat(12, 1fr); }
+
+blockquote li {
+  list-style-type: none; }
+  blockquote li:before {
+    content: "\200B";
+    /* add zero-width space */ }
 
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 /* Document
@@ -443,16 +448,6 @@ template {
   src: local("PT Serif"), local("PTSerif-Regular"), url(/assets/fonts/pt-serif-italic.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215; }
 
-html {
-  font-family: "PT Serif", serif; }
-  html h1,
-  html h2,
-  html h3,
-  html h4,
-  html h5,
-  html h6 {
-    font-family: "PT Sans", Helvetica, Arial, sans-serif; }
-
 /* ==========================================================================
 Base styles: opinionated defaults
 ========================================================================== */
@@ -671,7 +666,7 @@ hr {
   border: 1px solid;
   border-radius: .125em;
   box-shadow: 0 0 .5em 0 #fff;
-  font: normal 400 1em/1.7 "PT Sans", Helvetica, Arial, sans-serif;
+  font: normal 400 1em/1.7 "PT Serif", serif;
   text-align: center;
   text-decoration: none;
   vertical-align: baseline;
@@ -856,13 +851,13 @@ html,
 input,
 textarea,
 select {
-  font-family: "PT Serif", serif;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.7; }
 
 html {
-  font-size: calc(16px + (22 - 16) * (100vw - 400px)/(1280 - 400));
+  font-size: calc(16px + (22 - 16) * (100vw - 400px)/(1920 - 400));
   line-height: 1.7;
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: auto;
@@ -871,16 +866,16 @@ html {
 h1,
 h2,
 .h-like {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "PT Serif", serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.2; }
 
 h3,
 h4,
 h5,
 h6 {
-  font-family: "PT Serif", serif;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: 400; }
 
@@ -893,24 +888,6 @@ h6,
 .h-like {
   color: var(--color-main); }
 
-h1 {
-  font-size: 2.19rem; }
-
-h2 {
-  font-size: 1.87rem; }
-
-h3 {
-  font-size: 1.6rem; }
-
-h4 {
-  font-size: 1.37rem; }
-
-h5 {
-  font-size: 1.17rem; }
-
-h6 {
-  font-size: 1rem; }
-
 p,
 .p-like,
 ul,
@@ -920,6 +897,10 @@ blockquote,
 pre,
 caption {
   margin: 1.7em 0; }
+
+.lang {
+  text-transform: uppercase;
+  font-size: 0.8em; }
 
 dt {
   margin-top: 1.7em; }
@@ -996,8 +977,6 @@ blockquote {
   font-size: 1.1em;
   border: none;
   border-left: 0.25rem solid var(--color-main); }
-  blockquote li {
-    list-style-type: none; }
   blockquote li::before {
     content: "—"; }
   blockquote cite {
@@ -1042,19 +1021,21 @@ html {
   background-color: var(--color-main-whitey);
   background-image: none; }
   .container .content {
-    grid-column: 1 / 8; }
+    grid-column: 2 / 8;
+    max-width: 900px;
+    margin: auto; }
     @media (max-width: 959px) {
       .container .content {
-        grid-column: 1 / 12; } }
+        grid-column: 2 / 12; } }
   .container aside {
     grid-column: 9 / 12;
-    margin: 6rem 0;
+    margin: 2rem 0;
     background-color: var(--color-main-lightgray);
     padding: 1rem;
     display: grid; }
     @media (max-width: 959px) {
       .container aside {
-        grid-column: 1 / 12; } }
+        grid-column: 2 / 12; } }
 
 .categories {
   background-color: var(--color-main-whitey);
@@ -1114,53 +1095,53 @@ body.menu-open {
   body.menu-open .menu-label {
     display: none; }
 
-.main-header {
+.nav-header {
   position: relative; }
-  .main-header .close-label {
+  .nav-header .close-label {
     display: none; }
-  .main-header a {
+  .nav-header a {
     color: #fff; }
-    .main-header a:hover {
+    .nav-header a:hover {
       color: #fff; }
-    .main-header a.title {
-      display: inline-block;
-      font-weight: bold;
-      line-height: 1.7;
-      grid-column: 1 / 11; }
-      .main-header a.title:hover, .main-header a.title:active {
-        background: none; }
-      .main-header a.title p {
-        display: inline-block;
-        line-height: 2rem;
-        margin: 1rem 0 1rem 1rem; }
-  .main-header .avatar-container {
-    float: left;
-    height: 6rem; }
-  .main-header .avatar {
-    height: 5rem;
+    .nav-header a.title {
+      display: flex;
+      grid-column: 2 / 11;
+      line-height: 4rem;
+      font-size: 1.7rem; }
+  .nav-header .avatar {
+    height: 3rem;
     width: auto; }
-  .main-header nav {
-    font-family: "PT Sans", Helvetica, Arial, sans-serif;
-    grid-column: 12 / 13;
+  .nav-header nav {
+    grid-column: 11 / 12;
     display: flex;
     margin-left: auto;
     justify-content: center;
     flex-direction: column; }
-  .main-header ul {
+  .nav-header ul {
     display: none; }
-    .main-header ul a {
+    .nav-header ul a {
       padding: .5rem 1rem; }
-  .main-header .menu-trigger {
+  .nav-header .menu-trigger {
     z-index: 5; }
   @media (min-width: 960px) {
-    .main-header .menu-trigger {
+    .nav-header .menu-trigger {
       display: none; }
-    .main-header ul {
+    .nav-header ul {
       display: flex; }
-    .main-header nav {
-      grid-column: 6 / 13; }
-    .main-header a.title {
-      grid-column: 1 / 5; } }
+    .nav-header nav {
+      grid-column: 6 / 12; }
+    .nav-header a.title {
+      grid-column: 2 / 5; } }
+
+.page-title {
+  grid-column: 1 / 13;
+  text-align: center;
+  background-color: var(--color-main-lightgray);
+  margin: 0;
+  padding: 1rem; }
+  .page-title small {
+    display: block;
+    font-size: 0.9em; }
 
 .post {
   padding-top: 2rem;
@@ -1179,8 +1160,6 @@ body.menu-open {
     .post header > span a,
     .post header > time a {
       color: var(--gray-color); }
-  .post .lang {
-    font-style: italic; }
   .post .post-title {
     margin-top: 0; }
   .post .post-content h2:first-child {

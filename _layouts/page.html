@@ -2,12 +2,12 @@
 layout: default
 ---
 
-<div class="page">
+<section class="page">
   <h2 class="page-title">{{ page.title }}</h2>
   <div class="post-content">
     {{ content }}
   </div>
-</div>
+</section>
 
 {% if page.comments == true %}
 {% include comments.html.liquid slug=page.slug url=page.url %}

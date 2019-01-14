@@ -1,10 +1,7 @@
 ---
 layout: default
 ---
-<section class="posts" aria-label="{{ "Tous les articles" | t: page.locale }}" >
-  <header class="page-title">
-    <h1>{{ page.title }}</h1>
-  </header>
+<div class="content" role="main" class="posts" aria-label="{{ "Tous les articles" | t: page.locale }}">
   {% if page.category %}
     {% assign displayCategory = false %}
   {% else %}
@@ -14,4 +11,4 @@ layout: default
   {% for post in paginator.posts %}
       {% include post.html.liquid postPage=false post=post displayCategory=displayCategory %}
   {% endfor %}
-</section>
+</div>

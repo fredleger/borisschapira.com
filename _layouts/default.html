@@ -29,24 +29,23 @@ layout: microtypo
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/pt-sans-bold.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/pt-serif-italic.woff2" crossorigin>
     <link rel="preload" as="image" href="/assets/images/symbols.svg">
-    <link rel="preload" as="style" href="/assets/styles/critical_{{ site.time | date: "%s" }}.css">
-    <link rel="preload" as="style" href="/assets/styles/main_{{ site.time | date: "%s" }}.css">
-    {% if page.i18n-key == "search" %}
-    <link rel="preload" as="style" href="/assets/styles/vendors/instantsearch_{{ site.time | date: "%s" }}.min.css">
-    <link rel="preload" as="style" href="/assets/styles/vendors/instantsearch_{{ site.time | date: "%s" }}.min.css">
-    {% endif %}
+    <link rel="preload" as="style" href="{% include assets/css.html.liquid name='/assets/styles/critical' %}">
+    <link rel="preload" as="style" href="{% include assets/css.html.liquid name='/assets/styles/main' %}">
+    <link rel="preload" as="style" href="{% include assets/css.html.liquid name='/assets/styles/vendors/highlightjs' %}">
+    <link rel="preload" as="style" href="{% include assets/css.html.liquid name='/assets/styles/vendors/instantsearch.min' %}">
+    <link rel="preload" as="style" href="{% include assets/css.html.liquid name='/assets/styles/vendors/instantsearch-theme-algolia.min' %}">
     {% comment %} / Preloading the fonts and styles for later use {% endcomment %}
 
     {% comment %} Styles {% endcomment %}
     <script>performance.mark('mark_declare_css_start');</script>
-    <link href="/assets/styles/critical.css" rel="stylesheet">
+    <link href="{% include assets/css.html.liquid name='/assets/styles/critical' %}" rel="stylesheet">
     {% capture themeColor %}{{ site.data.styles.main.color }}{% endcapture %}
-    <link href="/assets/styles/main_{{ site.time | date: "%s" }}.css" rel="stylesheet">
+    <link href="{% include assets/css.html.liquid name='/assets/styles/main' %}" rel="stylesheet">
     {% if page.i18n-key == "search" %}
-    <link href="/assets/styles/vendors/instantsearch_{{ site.time | date: "%s" }}.min.css" rel="stylesheet">
-    <link href="/assets/styles/vendors/instantsearch-theme-algolia_{{ site.time | date: "%s" }}.min.css" rel="stylesheet">
+    <link href="{% include assets/css.html.liquid name='/assets/styles/vendors/instantsearch.min' %}" rel="stylesheet">
+    <link href="{% include assets/css.html.liquid name='/assets/styles/vendors/instantsearch-theme-algolia.min' %}" rel="stylesheet">
     {% endif %}
-    <link href="/assets/styles/vendors/highlightjs_{{ site.time | date: "%s" }}.css" rel="stylesheet">
+    <link href="{% include assets/css.html.liquid name='/assets/styles/vendors/highlightjs' %}" rel="stylesheet">
     <script>performance.mark('mark_declare_css_end');performance.measure('mark_declare_css', 'mark_declare_css_start', 'mark_declare_css_end');</script>
     {% comment %} / Styles {% endcomment %}
 
@@ -133,12 +132,12 @@ layout: microtypo
   <body class="colorized menu-state {% if page.category %}{{page.category}}{% else %}main{% endif %}">
     <a class="skip-main" href="#main">{{ "Aller directement au contenu principal" | t: page.locale }}</a>
 
-    <header class="main-header">
-      <a href="{{ page.baseurl | relative_url }}" itemprop="url" class="title text-xl">
-        <div class="avatar-container">
-          <!-- nomicrotypo -->{% include avatar.svg %}<!-- endnomicrotypo -->
-        </div>
-        <p>Boris<br>Schapira</p>
+    <header class="nav-header">
+      <a href="{{ page.baseurl | relative_url }}" itemprop="url" class="title">
+        <!--<div class="avatar-container">-->
+          <!-- nomicrotypo {% include avatar.svg %}<!-- endnomicrotypo
+        </div>-->
+        {{ site.title }}
       </a>
       <nav>
         <button class="menu-trigger button" aria-controls="main-nav" aria-expanded="false" id="menu-trigger" data-toggle-class="menu-open"
@@ -148,17 +147,17 @@ layout: microtypo
         </button>
         <ul class="menu">
           <li {% if page.type == 'post' or page.layout == 'index' %}class="active"{% endif %} itemprop="itemListElement" itemscope
-          itemtype="http://schema.org/ListItem"><a href="{{ page.baseurl | relative_url }}" itemscope  itemtype="http://schema.org/Thing" itemprop="item">blog</a></li>
+          itemtype="http://schema.org/ListItem"><a href="{{ page.baseurl | relative_url }}" itemscope  itemtype="http://schema.org/Thing" itemprop="item">Notes</a></li>
 
           <li {% if page.i18n-key == 'about' %}class="active"{% endif %} itemprop="itemListElement" itemscope
           itemtype="http://schema.org/ListItem">
-            <a href="{{ "a-propos" | t:page.locale | prepend: page.baseurl | relative_url }}">{{ "à propos" | t: page.locale }}</a>
+            <a href="{{ "a-propos" | t:page.locale | prepend: page.baseurl | relative_url }}">{{ "À propos" | t: page.locale }}</a>
           </li>
 
           <li {% if page.i18n-key == 'search' %}class="active"{% endif %} 
           itemprop="itemSearchResultsPage" itemscope
           itemtype="http://schema.org/SearchResultsPage">
-          <a href="{{ 'recherche' | t: page.locale | prepend: page.baseurl | relative_url }}/" itemscope itemtype="http://schema.org/SearchResultsPage" itemprop="item">{{ "recherche" | t: page.locale }}</a>
+          <a href="{{ 'Recherche' | t: page.locale | prepend: page.baseurl | relative_url }}/" itemscope itemtype="http://schema.org/SearchResultsPage" itemprop="item">{{ "Recherche" | t: page.locale }}</a>
           </li>
 
           {% if page.translation %}
@@ -169,13 +168,15 @@ layout: microtypo
         </ul>
       </nav>
     </header>
-    <div class="container">
+    <section class="container">
+      <h1 class="page-title">{{ page.title }}{%if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}</h1>
       <div class="content" role="main">
         {{ content }}
       </div>
+      {% if page.aside %}
       <aside>
         <div class="categories">
-          <h3>{{ "Catégories" | t: page.locale }}s</h3>
+          <h3>{{ "Catégories" | t: page.locale }}</h3>
           <ul>
             <li class="h-like colorized web {% if page.category == 'web' %}active{% endif %}" itemprop="itemListElement" itemscope
             itemtype="http://schema.org/ListItem"><a href="{{ 'web' | prepend: page.baseurl | relative_url }}/" itemscope  itemtype="http://schema.org/Thing" itemprop="item">{{ "web" | t: page.locale }}</a></li>
@@ -190,8 +191,9 @@ layout: microtypo
           </ul>
         </div>
       </aside>
-    </div>
-    <div class="main-footer">
+      {% endif %}
+    </section>
+    <footer class="main-footer">
         {% if paginator %}
         {% capture url_prefix %}{% if page.category %}/{{page.category}}{% endif %}{% endcapture %}
         {% if paginator.total_pages > 1 %}
@@ -288,7 +290,7 @@ layout: microtypo
         </ul>
         {% endif %}
         {% endif %}
-    </div>
+    </footer>
     {% include footer.html.liquid type=page.type loadTwitterWjs=page.loadTwitterWjs loadSearch=page.loadSearch %}
   </body>
 </html>

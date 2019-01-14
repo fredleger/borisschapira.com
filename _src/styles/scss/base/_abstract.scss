@@ -5,7 +5,14 @@
 }
 
 %main-grid {
-  padding: 0 $global-gutters/2;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+}
+
+// https://unfetteredthoughts.net/2017/09/26/voiceover-and-list-style-type-none/
+%li-no-list-style {
+  list-style-type: none;
+  &:before {
+    content: "\200B"; /* add zero-width space */
+  }
 }

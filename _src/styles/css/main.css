@@ -1,6 +1,12 @@
 /* ==========================================================================
    CONFIG
    ========================================================================== */
+.pagination, ul.comments {
+  list-style-type: none; }
+  .pagination:before, ul.comments:before {
+    content: "\200B";
+    /* add zero-width space */ }
+
 :root {
   --color-main-hue:        330;
   --color-main-saturation: 90%;
@@ -123,7 +129,6 @@ body {
   justify-content: center;
   margin: 3em auto;
   padding: 0;
-  list-style-type: none;
   color: #fff;
   max-width: 15rem; }
   .pagination li {
@@ -181,7 +186,6 @@ body {
 
 ul.comments {
   padding: 0 0 0 1rem;
-  list-style-type: none;
   border-left: 2px solid var(--color-main); }
   ul.comments .reply-to {
     margin: 0.5rem; }

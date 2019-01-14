@@ -1,5 +1,6 @@
 ---
 title: 'Premier Test de mise en forme'
+subtitle: 'un test de suivi'
 i18n-key: test-of-layout
 tags:
     - Typographie
@@ -7,8 +8,6 @@ sitemap: false
 norobots: true
 slug: test-typo
 ---
-
-## Un test de suivi
 
 > Ceci est un article destiné à tester le respect de certaines règles microtypographiques par mon site.  
 > Ne tenez pas compte du contenu ci-dessous.

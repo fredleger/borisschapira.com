@@ -9,7 +9,7 @@ select {
 }
 
 html {
-  font-size: calc(16px + (22 - 16) * (100vw - 400px)/(1280 - 400));
+  font-size: calc(16px + (22 - 16) * (100vw - 400px)/(1920 - 400));
   line-height: $default-line-height;
   text-rendering: optimizeSpeed;
 	-webkit-font-smoothing: auto;
@@ -44,30 +44,6 @@ h6,
   color: var(--color-main);
 }
 
-h1 {
-  font-size: 2.19rem;
-}
-
-h2 {
-  font-size: 1.87rem;
-}
-
-h3 {
-  font-size: 1.6rem;
-}
-
-h4 {
-  font-size: 1.37rem;
-}
-
-h5 {
-  font-size: 1.17rem;
-}
-
-h6 {
-  font-size: 1rem;
-}
-
 p,
 .p-like,
 ul,
@@ -77,6 +53,11 @@ blockquote,
 pre,
 caption {
   margin: $default-line-height * 1em 0;
+}
+
+.lang {
+  text-transform: uppercase;
+  font-size: 0.8em;
 }
 
 dt {
@@ -167,7 +148,7 @@ blockquote {
   border: none;
   border-left: 0.25rem solid var(--color-main);
   li {
-    list-style-type: none;
+    @extend %li-no-list-style;
   }
   li::before {
     content: "—";

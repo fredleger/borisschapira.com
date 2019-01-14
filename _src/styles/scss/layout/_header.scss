@@ -27,7 +27,7 @@ body.menu-open {
   }
 }
 
-.main-header {
+.nav-header {
     position: relative;
     @extend %main-grid;
 
@@ -43,37 +43,20 @@ body.menu-open {
       }
       
       &.title {
-        display: inline-block;
-        font-weight: bold;
-        line-height: $default-line-height;
-        grid-column: 1 / 11;
-
-        &:hover,
-        &:active {
-          background: none;
-        }
-
-        p {
-          display: inline-block;
-          line-height: 2rem;
-          margin: $global-gutters/2 0 $global-gutters/2 $global-gutters/2;
-        }
+        display: flex;
+        grid-column: 2 / 11;
+        line-height: 4rem;
+        font-size: 1.7rem;
       }
     }
 
-    .avatar-container {
-      float: left;
-      height: 6rem;
-    }
-
     .avatar {
-      height: 5rem;
+      height: 3rem;
       width: auto;
     }
 
     nav {
-      font-family: $title-font-family;
-      grid-column: 12 / 13;
+      grid-column: 11 / 12;
       display: flex;
       margin-left: auto;
       justify-content: center;
@@ -101,10 +84,10 @@ body.menu-open {
         display: flex;
       }
       nav {
-        grid-column: 6 / 13;
+        grid-column: 6 / 12;
       }
       a.title {
-        grid-column: 1 / 5;
+        grid-column: 2 / 5;
       }
     }
 }

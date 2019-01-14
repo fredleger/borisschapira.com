@@ -71,8 +71,8 @@
 }
 
 ul.comments {
+  @extend %li-no-list-style;
 	padding: 0 0 0 1rem;
-	list-style-type: none;
 	border-left: 2px solid var(--color-main);
 	.reply-to {
 		margin: 0.5rem;

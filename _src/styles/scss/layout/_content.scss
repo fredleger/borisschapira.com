@@ -1,3 +1,16 @@
+.page-title {
+  grid-column: 1 / 13;
+  text-align: center;
+  background-color: var(--color-main-lightgray);
+  margin: 0;
+  padding: $global-gutters/2;
+
+  small {
+    display: block;
+    font-size: 0.9em;
+  }
+}
+
 .post {
   padding-top: 2rem;
   border-bottom: 1px solid var(--color-main-lightgray);
@@ -29,10 +42,6 @@
         color: var(--gray-color);
       }
     }
-  }
-
-  .lang {
-    font-style: italic;
   }
 
   .post-title {

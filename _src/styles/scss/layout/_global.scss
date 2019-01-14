@@ -12,22 +12,24 @@ html {
   @extend %main-grid;
 
   .content {
-    grid-column: 1 / 8;
+    grid-column: 2 / 8;
+    max-width: 900px;
+    margin: auto;
 
     @include media('<large') {
-      grid-column: 1 / 12;
+      grid-column: 2 / 12;
     }
   }
 
   aside {
     grid-column: 9 / 12;
-    margin: 6rem 0;
+    margin: $global-gutters 0;
     background-color: var(--color-main-lightgray);
     padding: $global-gutters/2;
     display: grid;
 
     @include media('<large') {
-      grid-column: 1 / 12;
+      grid-column: 2 / 12;
     }
   }
 }

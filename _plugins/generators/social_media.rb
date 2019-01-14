@@ -62,6 +62,9 @@ module Jekyll
       else
         if page.data.key?("title")
           title = page.data["title"]
+          if page.data.key?("subtitle")
+            title = title + ' (' + page.data["subtitle"] + ')'
+          end
         end
 
         if page.data.key?("description")
