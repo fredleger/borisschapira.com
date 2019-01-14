@@ -13,11 +13,18 @@ html {
 
   .content {
     grid-column: 2 / 8;
-    max-width: 900px;
-    margin: auto;
+
+    &.full-width {
+      grid-column: 2 / 12;
+    }
 
     @include media('<large') {
       grid-column: 2 / 12;
+    }
+
+    @include media('>=xlarge') {
+      max-width: 45rem;
+      margin: auto;
     }
   }
 

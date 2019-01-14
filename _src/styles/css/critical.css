@@ -1021,12 +1021,16 @@ html {
   background-color: var(--color-main-whitey);
   background-image: none; }
   .container .content {
-    grid-column: 2 / 8;
-    max-width: 900px;
-    margin: auto; }
+    grid-column: 2 / 8; }
+    .container .content.full-width {
+      grid-column: 2 / 12; }
     @media (max-width: 959px) {
       .container .content {
         grid-column: 2 / 12; } }
+    @media (min-width: 1200px) {
+      .container .content {
+        max-width: 45rem;
+        margin: auto; } }
   .container aside {
     grid-column: 9 / 12;
     margin: 2rem 0;
@@ -1142,6 +1146,9 @@ body.menu-open {
   .page-title small {
     display: block;
     font-size: 0.9em; }
+    .page-title small.page {
+      display: inline;
+      font-size: 0.8em; }
 
 .post {
   padding-top: 2rem;

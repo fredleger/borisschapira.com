@@ -170,7 +170,7 @@ layout: microtypo
     </header>
     <section class="container">
       <h1 class="page-title">{{ page.title }}{%if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}</h1>
-      <div class="content" role="main">
+      <div class="content{% if page.layout=='post' or page.layout=='page' %} full-width{% endif %}" role="main">
         {{ content }}
       </div>
       {% if page.aside %}
