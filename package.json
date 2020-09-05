@@ -68,7 +68,7 @@
     "eslint-config-google": "^0.11.0",
     "eslint-plugin-import": "^2.14.0",
     "netlify-lambda": "^1.0.3",
-    "node-sass": "^4.9.4",
+    "node-sass": "^4.13.1",
     "postcss": "^7.0.5",
     "postcss-cli": "^6.0.0",
     "prettier": "^1.14.3",
