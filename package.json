@@ -69,7 +69,7 @@
     "eslint-plugin-import": "^2.14.0",
     "netlify-lambda": "^1.0.3",
     "node-sass": "^4.9.4",
-    "postcss": "^7.0.5",
+    "postcss": "^8.2.10",
     "postcss-cli": "^6.0.0",
     "prettier": "^1.14.3",
     "uglify-js": "^3.4.9"
